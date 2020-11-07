@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+  }
+body{
+    font-family: 'Roboto';
+}
+.container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.card{
+    min-height: 30vh;
+    width: 20rem;
+    border-radius: 30px;
+    padding: 1rem 3rem;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+}
+.files{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

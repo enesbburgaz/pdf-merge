@@ -3,28 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Merge</title>
+    <title>Pdf Operations</title>
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data">
-        <div>
-          <label for="file">Choose file to upload</label>
-          <input type="file" id="file" name="file" accept=".pdf" multiple>
-          <input type="text" name="fileName" placeholder="File Name" required>
-        </div>
-        <div>
-          <button>Merge</button>
-        </div>
-       </form>
-          {% if files %}
-          <div class="container">
-            <h1>Files</h1>
-            <ul>
-                {% for file in files %}
-                <li><a href="output/{{ file }}">{{ file }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>            
-      {% endif %}
+  <div class="container">
+    <div class="card">
+      <h1>Pdf Merge</h1>
+      <form method="POST" enctype="multipart/form-data">
+          <div>
+            <label for="file">Choose file to upload</label>
+            <input type="file" id="file" name="file" accept=".pdf" multiple>
+            <input type="text" name="fileName" placeholder="File Name" required>
+          </div>
+          <div>
+            <button>Merge</button>
+          </div>
+      </form>
+    </div>
+    <div class="card">
+      <h1>Pdf to Image</h1>
+      <form action="/pdfToImage" method="POST" enctype="multipart/form-data">
+          <div>
+            <label for="file">Choose file to upload</label>
+            <input type="file" id="file" name="pdfFile" accept=".pdf">
+            <input type="text" name="pdfName" placeholder="File Name" required>
+          </div>
+          <div>
+            <button>Convert</button>
+          </div>
+      </form>
+    </div>
+    <div class="card">
+      <h1>Image to Pdf</h1>
+      <form action="/imageToPdf" method="POST" enctype="multipart/form-data">
+          <div>
+            <label for="file">Choose file to upload</label>
+            <input type="file" id="file" name="imageFile">
+            <input type="text" name="imageName" placeholder="File Name" required>
+          </div>
+          <div>
+            <button>Convert</button>
+          </div>
+      </form>
+    </div>
+  </div>
+    <div class="files">
+        {% if files %}
+          <h1>Files</h1>
+          <ul>
+              {% for file in files %}
+              <li><a href="output/{{ file }}">{{ file }}</a></li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
 </body>
 </html>
